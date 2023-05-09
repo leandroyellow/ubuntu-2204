@@ -1,14 +1,8 @@
-# Autor: Robson Vaamonde
-# Site: www.procedimentosemti.com.br
-# Facebook: facebook.com/ProcedimentosEmTI
-# Facebook: facebook.com/BoraParaPratica
-# YouTube: youtube.com/BoraParaPratica
-# Linkedin: https://www.linkedin.com/in/robson-vaamonde-0b029028/
-# Instagram: https://www.instagram.com/procedimentoem/?hl=pt-br
-# Data de criação: 10/10/2021
-# Data de atualização: 03/02/2022
-# Versão: 0.05
-# Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
+# Autor: Leandro Queiroz Trepador
+# Data de criação: 09/05/2023
+# Data de atualização: 09/05/2023
+# Versão: 0.01
+# Testado e homologado para a versão do Ubuntu Server 22.04.x LTS x64
 # Mais informações veja o arquivo: scripts/settings/04-ConfiguracaoDoNetplan.sh
 # Após as configuração do endereço IPv4 digitar o comando: netplan --debug apply
 #
@@ -27,22 +21,22 @@ network:
       #
       # Configuração do Endereço IPv4 e CIDR Estático do Ubuntu Server
       addresses:
-      - 172.16.1.20/24
+      - 192.168.1.201/24
       #
       # Configuração do Endereço de Gateway IPv4 do Ubuntu Server
-      gateway4: 172.16.1.254
+      gateway4: 192.168.1.1
       #
       # Configuração dos Endereços de DNS Server IPv4 do Ubuntu Server
       nameservers:
         addresses:
         #- 172.16.1.20
-        - 172.16.1.254
-        #- 8.8.8.8
-        #- 8.8.8.8
+        - 192.168.1.1
+        - 8.8.8.8
+        - 8.8.4.4
         #
         # Configuração do Nome de Pesquisa DNS do Ubuntu Server
         search:
-        - pti.intra
+        - servidor.leandro
         #
   # Configuração da versão do Protocolo Ethernet do Ubuntu Server
   version: 2

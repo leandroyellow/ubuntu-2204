@@ -61,7 +61,7 @@ sudo apt install bridge-utils ifenslave net-tools
 # o Netplan. OBSERVAÇÃO: o nome do arquivo pode mudar dependendo da versão
 # do Ubuntu Server.
 /etc/netplan/50-cloud-init.yaml #Padrão Ubuntu Server 18.04.x LTS
-/etc/netplan/00-installer-config.yaml #Padrão Ubuntu Server 20.04.x LTS
+/etc/netplan/00-installer-config.yaml #Padrão Ubuntu Server 22.04.x LTS
 #
 # OBSERVAÇÃO IMPORTANTE: o arquivo de configuração o Netplan e baseado no
 # formato de serialização de dados legíveis YAML (Yet Another Markup Language)
@@ -86,17 +86,36 @@ sudo route -n
 sudo ip route
 #
 # Configuração do endereçamento IPv4 Static (Estático)
+# This is the network config written by 'subiquity'
+network:
+  ethernets:
+    enp0s3:
+      addresses:
+      - 192.168.1.201/24
+      nameservers:
+        addresses:
+        - 8.8.8.8
+        - 8.8.4.4
+        search:
+        - servidor.leandro
+      routes:
+      - to: default
+        via: 192.168.1.1
+  version: 2
+
+
+# Configuração do endereçamento IPv4 Static (Estático)
 # Configuração do Endereço IPv4 e dos Servidores de DNS na mesma linha
 # utilizando os [] (Colchetes)
 network:
 	ethernets:
 		enp0s3:
 			dhcp4: false
-			addresses: [172.16.1.20/24]
-			gateway4: 172.16.1.254
+			addresses: [192.168.1.201/24]
+			gateway4: 192.168.1.1
 			nameservers:
-				addresses: [172.16.1.254, 8.8.8.8, 8.8.4.4]
-				search: [pti.intra]
+				addresses: [192.168.1.1, 8.8.8.8, 8.8.4.4]
+				search: [servidor.leandro]
 	version: 2
 #
 # Aplicando as configurações e verificando o status da Placa de Rede
@@ -116,15 +135,15 @@ network:
 		enp0s3:
 			dhcp4: false
 			addresses: 
-			- 172.16.1.20/24
-			gateway4: 172.16.1.254
+			- 192.168.1.201/24
+			gateway4: 192.168.1.1
 			nameservers:
 				addresses: 
-				- 172.16.1.254
+				- 192.168.1.1
 				- 8.8.8.8 
 				- 8.8.4.4
 				search: 
-				- pti.intra
+				- servidor.leandro
 	version: 2
 #
 # Aplicando as configurações e verificando o status da Placa de Rede

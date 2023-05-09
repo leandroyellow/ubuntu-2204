@@ -92,11 +92,11 @@ Instalação do Ubuntu Server: https://ubuntu.com/server/docs/installation
 	_ 		enp0s3 eth <Enter>
 	_ 			Edit IPv4 <Enter>
 	_ 				IPv4 Method: Manual <Enter>
-	_ 					Subnet: 172.16.1.0/24 <Tab>
-	_ 					Address: 172.16.1.20 <Tab>
-	_ 					Gateway: 172.16.1.254 <Tab>
-	_ 					Name servers: 172.16.1.254 <Tab>
-	_ 					Search domains: pti.intra
+	_ 					Subnet: 192.168.1.0/24 <Tab>
+	_ 					Address: 192.168.1.201 <Tab>
+	_ 					Gateway: 192.168.1.1 <Tab>
+	_ 					Name servers: 8.8.8.8, 8.8.4.4 <Tab>
+	_ 					Search domains: servidor.leandro
 	_ 				<Save>
 	_ 	<Done>
 	_ 06. Configure proxy

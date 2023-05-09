@@ -1,16 +1,9 @@
 #!/bin/bash
-# Autor: Robson Vaamonde
-# Site: www.procedimentosemti.com.br
-# Facebook: facebook.com/ProcedimentosEmTI
-# Facebook: facebook.com/BoraParaPratica
-# YouTube: youtube.com/BoraParaPratica
-# Linkedin: https://www.linkedin.com/in/robson-vaamonde-0b029028/
-# Instagram: https://www.instagram.com/procedimentoem/?hl=pt-br
-# Github: https://github.com/vaamonde
-# Data de criação: 10/10/2021
-# Data de atualização: 30/04/2023
-# Versão: 0.28
-# Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
+# Autor: Leandro Queiroz Trepador
+# Data de criação: 09/05/2023
+# Data de atualização: 09/05/2023
+# Versão: 0.01
+# Testado e homologado para a versão do Ubuntu Server 22.04.x LTS x64
 # Testado e homologado para a versão do OpenSSH Server v8.2.x
 #
 # OpenSSH (Open Secure Shell) é um conjunto de utilitários de rede relacionado à segurança que 
@@ -32,12 +25,12 @@
 # Acesso remoto utilizando o GNU/Linux ou Microsoft Windows
 #
 # Linux Mint Terminal: Ctrl+Alt+T
-# 	ssh vaamonde@172.16.1.20
-#	ssh vaamonde@ssh.pti.intra
+# 	ssh leandro@192.168.1.201
+#	ssh leandro@ssh.servidor.leandro
 #
 # Windows Powershell: Menu, Powershell 
-#	ssh vaamonde@172.16.1.20
-#	ssh vaamonde@ssh.pti.intra
+#	ssh leandro@192.168.1.201
+#	ssh leandro@ssh.servidor.leandro
 #
 # Linux Mint ou Windows:
 #	apt install putty putty-tools
@@ -56,10 +49,10 @@
 # Gerando os pares de chaves Pública/Privadas utilizando o GNU/Linux
 # Linux Mint Terminal: Ctrl+Alt+T
 #	ssh-keygen
-#		Enter file in which to save the key (/home/vaamonde/.ssh/id_rsa): /home/vaamonde/.ssh/vaamonde <Enter>
+#		Enter file in which to save the key (/home/leandro/.ssh/id_rsa): /home/leandro/.ssh/leandro <Enter>
 #		Enter passphrase (empty for no passphrase): <Enter>
 #		Enter same passphrase again: <Enter>
-#	ssh-copy-id vaamonde@172.16.1.20
+#	ssh-copy-id leandro@192.168.1.201
 #
 # Importando os pares de chaves Públicas/Privadas utilizando o Powershell
 # Windows Powershell: Menu, Powershell 
@@ -69,7 +62,7 @@
 #		Start-Service ssh-agent <Enter>
 #
 #	Segunda etapa: Powershell do perfil do usuário sem ser como administrador
-#		ssh-add .\vaamonde <Enter>
+#		ssh-add .\leandro <Enter>
 #
 # Arquivo de configuração dos parâmetros utilizados nesse script
 source 00-parametros.sh
@@ -77,17 +70,17 @@ source 00-parametros.sh
 # Configuração da variável de Log utilizado nesse script
 LOG=$LOGSCRIPT
 #
-# Verificando se o usuário é Root e se a Distribuição é >= 20.04.x 
+# Verificando se o usuário é Root e se a Distribuição é >= 22.04.x 
 # [ ] = teste de expressão, && = operador lógico AND, == comparação de string, exit 1 = A maioria 
 # dos erros comuns na execução
 clear
-if [ "$USUARIO" == "0" ] && [ "$UBUNTU" == "20.04" ]
+if [ "$USUARIO" == "0" ] && [ "$UBUNTU" == "22.04" ]
 	then
 		echo -e "O usuário é Root, continuando com o script..."
-		echo -e "Distribuição é >= 20.04.x, continuando com o script..."
+		echo -e "Distribuição é >= 22.04.x, continuando com o script..."
 		sleep 5
 	else
-		echo -e "Usuário não é Root ($USUARIO) ou a Distribuição não é >= 20.04.x ($UBUNTU)"
+		echo -e "Usuário não é Root ($USUARIO) ou a Distribuição não é >= 22.04.x ($UBUNTU)"
 		echo -e "Caso você não tenha executado o script com o comando: sudo -i"
 		echo -e "Execute novamente o script para verificar o ambiente."
 		exit 1
@@ -172,7 +165,7 @@ if [ -f $LOG ]
 		sleep 5
 fi
 #
-# Script de configuração do OpenSSH Server no GNU/Linux Ubuntu Server 20.04.x LTS
+# Script de configuração do OpenSSH Server no GNU/Linux Ubuntu Server 22.04.x LTS
 # opção do comando echo: -e (enable interpretation of backslash escapes), \n (new line)
 # opção do comando date: + (format), %d (day), %m (month), %Y (year 1970), %H (hour 24), %M (minute 60)
 # opção do comando hostname: -I (all-ip-addresses)
@@ -181,7 +174,7 @@ echo -e "Início do script $0 em: $(date +%d/%m/%Y-"("%H:%M")")\n" &>> $LOG
 clear
 echo
 #
-echo -e "Configuração do OpenSSH Server no GNU/Linux Ubuntu Server 20.04.x\n"
+echo -e "Configuração do OpenSSH Server no GNU/Linux Ubuntu Server 22.04.x\n"
 echo -e "Porta padrão utilizada pelo OpenSSH Server.: TCP $PORTSSH"
 echo -e "Porta padrão utilizada pelo Shell-In-a-Box.: TCP $PORTSHELLINABOX"
 echo -e "Após a instalação do Shell-In-a-Box acessar a URL: https://$(hostname -I | cut -d' ' -f1):$PORTSHELLINABOX/\n"
