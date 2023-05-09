@@ -1,18 +1,11 @@
 #!/bin/bash
-# Autor: Robson Vaamonde
-# Site: www.procedimentosemti.com.br
-# Facebook: facebook.com/ProcedimentosEmTI
-# Facebook: facebook.com/BoraParaPratica
-# YouTube: youtube.com/BoraParaPratica
-# Linkedin: https://www.linkedin.com/in/robson-vaamonde-0b029028/
-# Instagram: https://www.instagram.com/procedimentoem/?hl=pt-br
-# Github: https://github.com/vaamonde
-# Data de criação: 10/10/2021
-# Data de atualização: 20/01/2022
-# Versão: 0.20
-# Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x644
+# Autor: Leandro Queiroz Trepador
+# Data de criação: 08/05/2023
+# Data de atualização: 08/05/2023
+# Versão: 0.01
+# Testado e homologado para a versão do Ubuntu Server 22.04.x LTS x64
 #
-# Configuração da Placa de Rede no GNU/Linux Ubuntu 20.04.x LTS
+# Configuração da Placa de Rede no GNU/Linux Ubuntu 22.04.x LTS
 # UDEV (userspace /dev) responsável por controlar os dispositivos do
 # sistema utilizando o Systemd para nomear as Placas de Rede no Ubuntu
 # Site: https://netplan.io/examples
